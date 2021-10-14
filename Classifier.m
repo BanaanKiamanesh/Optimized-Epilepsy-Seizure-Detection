@@ -1,4 +1,4 @@
-function [Err, Acc]=Classifier(Features, Labels, FeatureRows)
+function [Err, Acc, TotalAcc]=Classifier(Features, Labels, FeatureRows)
 
     % This Function is Responsible of Classifying and Bringing Back and Err
 

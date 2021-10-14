@@ -17,6 +17,7 @@ function Sol = DiscreteBBO(CostFunction, HabitationNum, MaxIt, VarNum, Range)
     Habitat.SIV = [];
     Habitat.HSI = [];
     Habitat.Acc = [];
+    Habitat.TotalAcc = [];
     Counter = 0;
 
     % Create Habitats Array
@@ -25,7 +26,7 @@ function Sol = DiscreteBBO(CostFunction, HabitationNum, MaxIt, VarNum, Range)
     % Initialize Habitats
     parfor i = 1:HabitationNum
         hbt(i).SIV = randi(Range, [1 VarNum]);
-        [hbt(i).HSI, hbt(i).Acc] = CostFunction(hbt(i).SIV);
+        [hbt(i).HSI, hbt(i).Acc, hbt(i).TotalAcc] = CostFunction(hbt(i).SIV);
     end
 
     % Sort Population
@@ -71,7 +72,7 @@ function Sol = DiscreteBBO(CostFunction, HabitationNum, MaxIt, VarNum, Range)
             end
 
             % Evaluation
-            [newhbt(i).HSI, newhbt(i).Acc] = CostFunction(newhbt(i).SIV);
+            [newhbt(i).HSI, newhbt(i).Acc, newhbt(i).TotalAcc] = CostFunction(newhbt(i).SIV);
         end
 
         % Sort New Population
